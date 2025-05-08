@@ -24,7 +24,7 @@ export default function Result () {
         </View>
     )
 }
-
+//
 const styles = StyleSheet.create({
     par0: {
         color: 'black',
@@ -53,7 +53,7 @@ const styles = StyleSheet.create({
     },
 
     button:{
-        
+
         alignItems: 'center',
         justifyContent: 'center',
         paddingVertical: 12,

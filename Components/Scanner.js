@@ -15,7 +15,7 @@ export default function Scanner() {
     setScanned(true)
     setDone(true)
   }
-  
+
 
   useEffect(() => {
     if(done){
@@ -35,7 +35,7 @@ export default function Scanner() {
 
   const handleBarCodeScanned = ({ type, data }) =>{
     setScanned(true);
-    alert(`Bar code Type: ${type} Data${data} successfully scanned`)
+    alert(`${data}`)
     setDone(true)
   }
 
@@ -60,14 +60,14 @@ export default function Scanner() {
           <Text style={styles.par2}>
             Home
           </Text>
-        </Pressable> 
+        </Pressable>
           </BarCodeScanner>
-          
+
 
       );
   }
 
-  
+
 }
 
 const styles = StyleSheet.create({

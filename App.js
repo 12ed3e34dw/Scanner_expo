@@ -1,21 +1,27 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, Button } from 'react-native';
-import React from 'react';
-import Result from './Components/Result';
+import { StyleSheet, View } from 'react-native';
+import React, { useEffect, useState } from 'react';
+
+// Splash Screens
+import Splash_1 from './src/Splash_Screen/Splash_Screesn_Page_1';
 
 
 export default function App() {
+  const [showSecondPage, setShowSecondPage] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setShowSecondPage(true);
+    }, 10000); // 10 секунд
+
+    return () => clearTimeout(timer);
+  }, []);
 
   return (
-      <Result />
+      <View style={{ flex: 1 }}>
+        <StatusBar style="auto" />
+        { <Splash_1 />}
+      </View>
   );
-}
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+}

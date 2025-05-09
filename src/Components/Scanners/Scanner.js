@@ -1,7 +1,7 @@
 import { StyleSheet, Text, Pressable } from 'react-native';
 import React, {useState, useEffect} from 'react';
 import { BarCodeScanner } from 'expo-barcode-scanner';
-import Result from './Result';
+import Scanners from './Scanners';
 
 export default function Scanner() {
 
@@ -20,7 +20,7 @@ export default function Scanner() {
   useEffect(() => {
     if(done){
       return(
-        <Result />
+        <Scanners />
       )
     }
 
@@ -47,7 +47,7 @@ export default function Scanner() {
 
   if(scanned || done){
     return(
-        < Result />
+        < Scanners />
     )
   }
   else{

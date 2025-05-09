@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import { View, Text, StyleSheet, Pressable } from "react-native";
 import Scanner from "./Scanner";
 
-export default function Result () {
+export default function Scanners () {
 
     const [done, setDone] = useState(false)
 

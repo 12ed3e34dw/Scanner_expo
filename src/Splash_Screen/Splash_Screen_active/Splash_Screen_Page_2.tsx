@@ -1,11 +1,15 @@
-import React, { useEffect, useState } from 'react';
 import { TouchableOpacity, Text, View, Image, StyleSheet } from 'react-native';
-import { useFonts } from 'expo-font';
+import React, { useEffect, useState } from "react";
 
-export default function SplashScreenPage2() {
+// Ico
+import splash1 from "../../assets/assets_Splash_Screen/foto_Splash_2.png";
+import splash2 from "../../assets/assets_Splash_Screen/foto_1.png";
+
+// Page
+import Scanner from '../../Components/Scanners/Scanners';  // импорт для корректного использования
+
+export default function SplashScreenPage2({ onStart }) {
     const [isFirstStyle, setIsFirstStyle] = useState(false);
-
-
 
     useEffect(() => {
         const timer = setTimeout(() => {
@@ -14,31 +18,29 @@ export default function SplashScreenPage2() {
         return () => clearTimeout(timer);
     }, []);
 
-
-
     return (
         <View style={isFirstStyle ? styles.container_main : styles.container}>
-            <Image source={require('')} style={styles.image} />
-
-            <Text style={isFirstStyle ? styles.text_main : styles.text}>
-                Go and enjoy our features for free and
-            </Text>
-            <Text style={isFirstStyle ? styles.text_1_main : styles.text_1}>
-                make your life easy with us.
-            </Text>
-
-            <TouchableOpacity
-                style={isFirstStyle ? styles.button_main : styles.button}
-                onPress={() => alert('Let’s Start!')}
-            >
-                <Text style={isFirstStyle ? styles.buttonText_main : styles.buttonText}>
-                    Let’s Start
+            <>
+                <Image source={isFirstStyle ? splash1 : splash2} style={{ width: 150, height: 150, marginBottom: 10, top: 170 }} />
+                <Text style={isFirstStyle ? styles.text_main : styles.text}>
+                    Go and enjoy our features for free and
                 </Text>
-                <Image source={require('')} style={isFirstStyle ? styles.image_1_main : styles.image_1} />
-            </TouchableOpacity>
+                <Text style={isFirstStyle ? styles.text_1_main : styles.text_1}>
+                    make your life easy with us.
+                </Text>
+                <TouchableOpacity
+                    style={isFirstStyle ? styles.button_main : styles.button}
+                    onPress={onStart}  // Вызываем onStart из пропсов
+                >
+                    <Text style={isFirstStyle ? styles.buttonText_main : styles.buttonText}>
+                        Let’s Start
+                    </Text>
+                </TouchableOpacity>
+            </>
         </View>
     );
 }
+
 
 const styles = StyleSheet.create({
     container: {
@@ -49,7 +51,6 @@ const styles = StyleSheet.create({
     },
     text: {
         color: 'white',
-        fontFamily: 'Itim',
         marginTop: 380,
     },
     text_1: {
@@ -66,7 +67,6 @@ const styles = StyleSheet.create({
         borderRadius: 8,
     },
     buttonText: {
-        fontFamily: 'Iter',
         margin: 17,
         fontWeight: 'bold',
     },
@@ -89,7 +89,6 @@ const styles = StyleSheet.create({
     },
     text_main: {
         color: 'black',
-        fontFamily: 'Itim',
         marginTop: 380,
     },
     text_1_main: {
@@ -106,7 +105,6 @@ const styles = StyleSheet.create({
         borderRadius: 8,
     },
     buttonText_main: {
-        fontFamily: 'Iter',
         color: 'white',
         margin: 17,
         fontWeight: 'bold',
@@ -116,3 +114,4 @@ const styles = StyleSheet.create({
         top: -38.3,
     },
 });
+

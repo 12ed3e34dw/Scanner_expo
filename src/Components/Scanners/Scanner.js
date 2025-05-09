@@ -1,111 +1,78 @@
-import { StyleSheet, Text, Pressable } from 'react-native';
-import React, {useState, useEffect} from 'react';
+import { StyleSheet, Text, Pressable, View } from 'react-native';
+import React, { useState, useEffect } from 'react';
 import { BarCodeScanner } from 'expo-barcode-scanner';
 import Scanners from './Scanners';
 
 export default function Scanner() {
+    const [done, setDone] = useState(false);
+    const [permission, setPermission] = useState(null);
+    const [scanned, setScanned] = useState(false);
 
-  const [done, setDone] = useState(false)
+    useEffect(() => {
+        const getPermissions = async () => {
+            const { status } = await BarCodeScanner.requestPermissionsAsync();
+            setPermission(status === 'granted');
+        };
 
-  const [permission, setPermission] = useState(null);
-  const [scanned, setScanned] = useState(false);
+        getPermissions();
+    }, []);
 
-  function solve(){
-    setPermission(true);
-    setScanned(true)
-    setDone(true)
-  }
-
-
-  useEffect(() => {
-    if(done){
-      return(
-        <Scanners />
-      )
-    }
-
-    const getPermissions = async () => {
-      const { status } = await BarCodeScanner.requestPermissionsAsync();
-      if(status == 'granted') setPermission(true);
-      else setPermission(false);
+    const handleBarCodeScanned = ({ type, data }) => {
+        setScanned(true);
+        alert(`${data}`);
+        setDone(true);
     };
 
-    getPermissions();
-  },[]);
+    if (permission === null) {
+        return <Text>Requesting camera permission</Text>;
+    }
+    if (permission === false) {
+        return <Text>Camera access denied</Text>;
+    }
+    if (scanned || done) {
+        return <Scanners />;
+    }
 
-  const handleBarCodeScanned = ({ type, data }) =>{
-    setScanned(true);
-    alert(`${data}`)
-    setDone(true)
-  }
-
-  if(permission === null){
-    return <Text>Requesting camera permission</Text>
-  }if(permission === false){
-    return <Text>Camera acess denied</Text>
-  }
-
-  if(scanned || done){
-    return(
-        < Scanners />
-    )
-  }
-  else{
     return (
-          <BarCodeScanner
-            onBarCodeScanned={scanned ? undefined : handleBarCodeScanned}
-            style={styles.BarCode}
-          >
-           <Pressable style={styles.Btt} onPress={() => setDone(true)}>
-          <Text style={styles.par2}>
-            Home
-          </Text>
-        </Pressable>
-          </BarCodeScanner>
+        <View style={styles.container}>
+            <BarCodeScanner
+                onBarCodeScanned={scanned ? undefined : handleBarCodeScanned}
+                style={StyleSheet.absoluteFillObject}
+            />
 
+            {/* Полупрозрачный слой на весь экран */}
+            <View style={styles.blurOverlay} />
 
-      );
-  }
-
-
+            {/* Кнопка поверх всех слоёв */}
+            <Pressable style={styles.button} onPress={() => setDone(true)}>
+                <Text style={styles.buttonText}>Home</Text>
+            </Pressable>
+        </View>
+    );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    flexDirection: 'column',
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-
-  BarCode: {
-      position: 'relative',
-      top: 0,
-      left: 0,
-      bottom: 40,
-      right: 0,
-      flex: 1,
-      alignItems: 'center',
-    justifyContent: 'flex-end',
-    backgroundColor: '#1C82AD',
-  },
-  Btt: {
-    position: 'relative',
-    alignItems: 'center',
-        justifyContent: 'center',
+    container: {
+        flex: 1,
+    },
+    blurOverlay: {
+        ...StyleSheet.absoluteFillObject,
+       // backgroundColor: 'rgba(255, 255, 255, 0.4)', // Полупрозрачный эффект
+        zIndex: 1,
+    },
+    button: {
+        position: 'absolute',
+        bottom: 50,
+        alignSelf: 'center',
+        backgroundColor: '#1C82AD',
         paddingVertical: 12,
         paddingHorizontal: 32,
         borderRadius: 50,
         elevation: 3,
-        backgroundColor: '#1C82AD',
-        maxHeight: '10%',
-        flex: 2,
-        bottom: 1,
-  },
-
-  par2: {
-    color: 'white',
-    fontSize: 20,
-},
+        zIndex: 2,
+    },
+    buttonText: {
+        color: 'white',
+        fontSize: 20,
+    },
 });

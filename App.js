@@ -1,18 +1,22 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, View } from 'react-native';
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 // Splash Screens
-import Splash_1 from './src/Splash_Screen/Splash_Screesn_Page_1';
+import Splash_1 from '@splash/Splash_Screen_active/Splash_Screen_Page_1';
+import Splash_2 from '@splash/Splash_Screen_active/Splash_Screen_Page_2';
 
+//Scanner
+import Scanner from './src/Components/Scanners/Scanner';
 
 export default function App() {
   const [showSecondPage, setShowSecondPage] = useState(false);
+  const [showScanner, setShowScanner] = useState(false);
 
   useEffect(() => {
     const timer = setTimeout(() => {
       setShowSecondPage(true);
-    }, 10000); // 10 секунд
+    }, 6000);
 
     return () => clearTimeout(timer);
   }, []);
@@ -20,8 +24,13 @@ export default function App() {
   return (
       <View style={{ flex: 1 }}>
         <StatusBar style="auto" />
-        { <Splash_1 />}
+        {showScanner ? (
+            <Scanner />
+        ) : showSecondPage ? (
+            <Splash_2 onStart={() => setShowScanner(true)} />
+        ) : (
+            <Splash_1 />
+        )}
       </View>
   );
-
 }

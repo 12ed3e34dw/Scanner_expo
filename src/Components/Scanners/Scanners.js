@@ -1,68 +1,24 @@
-import React, {useState} from "react";
-import { View, Text, StyleSheet, Pressable } from "react-native";
-import Scanner from "./Scanner";
+import React, { useState, useEffect } from "react";
+import { View, Text, StyleSheet } from "react-native";
+import Scanner from "../Scanners/Scanner";  // Убедитесь, что у вас правильно настроен компонент Scanner
 
-export default function Scanners () {
+export default function Scanners() {
 
-    const [done, setDone] = useState(false)
-
-    if(done){
-        return(
-            <Scanner />
-        )
-    }
-
-    return(
+    return (
         <View style={styles.container}>
-            <Text style={styles.par0}>QrCodeScanner</Text>
-            <Text style={styles.par}>Made by Guilherme M</Text>
-            <Pressable style={styles.button} onPress={() => setDone(true)}>
-                <Text style={styles.par2}>
-                    Press to scan.
-                </Text>
-            </Pressable>
+            <Scanner style={{width:'100%', height:'100%'}} />
         </View>
-    )
+    );
 }
-//
-const styles = StyleSheet.create({
-    par0: {
-        color: 'black',
-        flex: 1,
-        top: '10%',
-        fontSize: 40,
-    },
-    par: {
-        color: 'black',
-        flex: 2,
-        top: '10%',
-        fontSize: 30,
-    },
 
-    par2: {
-        color: 'white',
-        fontSize: 20,
-    },
+const styles = StyleSheet.create({
+
 
     container: {
-      flex: 1,
-      backgroundColor: '#fff',
-      alignItems: 'center',
-      justifyContent: 'center',
-      flexDirection: 'column',
-    },
-
-    button:{
-
+        flex: 1,
+        padding: 120,
         alignItems: 'center',
         justifyContent: 'center',
-        paddingVertical: 12,
-        paddingHorizontal: 32,
-        borderRadius: 10,
-        elevation: 3,
-        backgroundColor: '#1C82AD',
-        maxHeight: '10%',
-        flex: 2,
-        bottom: '5%',
-    }
-  });
+        flexDirection: 'column',
+    },
+});

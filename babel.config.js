@@ -11,6 +11,7 @@ module.exports = function (api) {
             '@components': './src/Components',
             '@screens': './src/Screens',
             '@splash': './src/Splash_Screen',
+            '@generate': './src/Generate_Code', // 🔥 добавлен алиас
           },
         },
       ],

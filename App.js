@@ -9,6 +9,15 @@ import Splash_2 from '@splash/Splash_Screen_active/Splash_Screen_Page_2';
 //Scanner
 import Scanner from './src/Components/Scanners/Scanner';
 
+
+//Test
+ //import Generate_Code_2 from '@generate/Generate_Code_Wi-Fi';
+
+
+
+
+
+
 export default function App() {
   const [showSecondPage, setShowSecondPage] = useState(false);
   const [showScanner, setShowScanner] = useState(false);
@@ -25,7 +34,8 @@ export default function App() {
       <View style={{ flex: 1 }}>
         <StatusBar style="auto" />
         {showScanner ? (
-            <Scanner />
+            //<Generate_Code_2 />
+           <Scanner />
         ) : showSecondPage ? (
             <Splash_2 onStart={() => setShowScanner(true)} />
         ) : (

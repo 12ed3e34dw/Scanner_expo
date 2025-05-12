@@ -11,9 +11,9 @@ import Scanner from './src/Components/Scanners/Scanner';
 
 
 //Test
- //import Generate_Code_2 from '@generate/Generate_Code_Wi-Fi';
+ //import Generate_Code_2 from '../Qr_test/src/Generate_Code/Generate_Code_Wi-Fi';
 
-
+import Menu from './src/Navigate/Menu';
 
 
 
@@ -34,8 +34,10 @@ export default function App() {
       <View style={{ flex: 1 }}>
         <StatusBar style="auto" />
         {showScanner ? (
-            //<Generate_Code_2 />
-           <Scanner />
+           // <Generate_Code_2 />
+          //<Scanner />
+            <Menu/>
+
         ) : showSecondPage ? (
             <Splash_2 onStart={() => setShowScanner(true)} />
         ) : (

@@ -37,7 +37,6 @@ export default function Menu() {
 
 const styles = StyleSheet.create({
    container: {},
-
     Text_generate: {
         color:'white',
         left:30,

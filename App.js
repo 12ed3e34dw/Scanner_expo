@@ -1,7 +1,8 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, View } from 'react-native';
 import { useEffect, useState } from 'react';
-
+import {loadLanguage, changeLanguage} from './src/i18n';
+import {useTranslation} from "react-i18next";
 // Splash Screens
 import Splash_1 from '@splash/Splash_Screen_active/Splash_Screen_Page_1';
 import Splash_2 from '@splash/Splash_Screen_active/Splash_Screen_Page_2';
@@ -18,9 +19,28 @@ import Menu from './src/Navigate/Menu';
 
 
 
+
 export default function App() {
   const [showSecondPage, setShowSecondPage] = useState(false);
   const [showScanner, setShowScanner] = useState(false);
+
+
+  //__________________________________________________________________________
+  //Translate
+
+  const {t} = useTranslation();
+
+  const handleLanguageChange = (lang) => {
+    console.log(lang)
+    changeLanguage(lang);
+  }
+
+  useEffect(() => {
+    loadLanguage();
+  }, []);
+  //__________________________________________________________________________
+
+
 
   useEffect(() => {
     const timer = setTimeout(() => {

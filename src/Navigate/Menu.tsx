@@ -63,6 +63,8 @@ const styles = StyleSheet.create({
         top: 670,
         left: 180,
         zIndex: 1,
+        borderTopRightRadius:8,
+        borderBottomRightRadius:8,
     },
     container_generate: {
         position: 'absolute',
@@ -72,6 +74,8 @@ const styles = StyleSheet.create({
         top: 670,
         left: 30,
         zIndex: 1,
+        borderTopLeftRadius:8,
+        borderBottomLeftRadius:8,
     },
     container_scanner: {
         position: 'absolute',
@@ -81,7 +85,7 @@ const styles = StyleSheet.create({
         left: 155,
         borderRadius: 30,
         top: 650,
-        zIndex: 99999, // Поверх generate
+        zIndex: 99999,
     },
     Img_Scanner: {
         width: 70,

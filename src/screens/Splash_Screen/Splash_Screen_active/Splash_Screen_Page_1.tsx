@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { View, StyleSheet, Text, Image } from 'react-native';
 
 
-import splash1 from '../../assets/assets_Splash_Screen/foto_Splash_2.png';
-import splash2 from '../../assets/assets_Splash_Screen/foto_1.png';
+import splash1 from '../../../assets/assets_Splash_Screen/foto_Splash_2.png';
+import splash2 from '../../../assets/assets_Splash_Screen/foto_1.png';
 
 export default function SplashScreenPage1() {
     const [isFirstStyle, setIsFirstStyle] = useState(false);

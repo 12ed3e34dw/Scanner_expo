@@ -2,11 +2,11 @@ import { TouchableOpacity, Text, View, Image, StyleSheet } from 'react-native';
 import React, { useEffect, useState } from "react";
 
 // Ico
-import splash1 from "../../assets/assets_Splash_Screen/foto_Splash_2.png";
-import splash2 from "../../assets/assets_Splash_Screen/foto_1.png";
+import splash1 from "../../../assets/assets_Splash_Screen/foto_Splash_2.png";
+import splash2 from "../../../assets/assets_Splash_Screen/foto_1.png";
 
 // Page
-import Scanner from '../../Components/Scanners/Scanners';  // импорт для корректного использования
+import Scanner from '../../../components/Scanners/Scanners';  // импорт для корректного использования
 
 export default function SplashScreenPage2({ onStart }) {
     const [isFirstStyle, setIsFirstStyle] = useState(false);

@@ -8,7 +8,7 @@ module.exports = function (api) {
         {
           root: ['./src'],
           alias: {
-            '@components': './src/Components',
+            '@components': './src/components',
             '@screens': './src/Screens',
             '@splash': './src/Splash_Screen',
             '@generate': './src/Generate_Code', // 🔥 добавлен алиас

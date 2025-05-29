@@ -1,20 +1,20 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, View } from 'react-native';
 import { useEffect, useState } from 'react';
-import {loadLanguage, changeLanguage} from './src/i18n';
+import {loadLanguage, changeLanguage} from './src/screens/Settings/i18n';
 import {useTranslation} from "react-i18next";
 // Splash Screens
 import Splash_1 from '@splash/Splash_Screen_active/Splash_Screen_Page_1';
 import Splash_2 from '@splash/Splash_Screen_active/Splash_Screen_Page_2';
 
 //Scanner
-import Scanner from './src/Components/Scanners/Scanner';
+import Scanner from './src/components/Scanners/Scanner';
 
 
 //Test
  //import Generate_Code_2 from '../Qr_test/src/Generate_Code/Generate_Code_Wi-Fi';
 
-import Menu from './src/Navigate/Menu';
+import Menu from './src/navigate/Menu';
 
 
 

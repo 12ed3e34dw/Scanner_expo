@@ -1,41 +1,80 @@
 
 import {StyleSheet, View, Text, TouchableOpacity, Image} from 'react-native';
 import { StatusBar } from 'expo-status-bar';
-
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import foto_Scanner from '../../src/assets/assets_Navigate/foto_Scanner.png';
 import foto_generate from '../../src/assets/assets_Navigate/foto_generate.png';
 import foto_history from '../../src/assets/assets_Navigate/foto_history.png';
 
-export default function Menu() {
+
+import ScannerScreen from "../components/Scanners/Scanner";
+//import { HistoryScreen } from "../screens/History/History_QR";
+//import HistoryScreen from "../screens/History/History_QR";
+
+const Stack = createNativeStackNavigator();
+
+function GenerateScreen() {
+    return (
+        <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+            <Text>Generate Screen</Text>
+        </View>
+    );
+}
+
+function HistoryScreen() {
+    return (
+        <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+            <Text>History Screen</Text>
+        </View>
+    );
+}
+
+function Menu({ navigation }) {
     return (
         <View style={styles.container}>
             <View style={styles.container_1}>
 
-                <TouchableOpacity>
+                <TouchableOpacity onPress={() => navigation.navigate('Generate')}>
                     <View style={styles.container_generate}>
-                        <Image source={foto_generate} style={styles.Img_generate}/>
+                        <Image source={foto_generate} style={styles.Img_generate} />
                         <Text style={styles.Text_generate}>Generate</Text>
                     </View>
                 </TouchableOpacity>
 
-
                 <View style={styles.container_scanner}>
-                    <TouchableOpacity>
-                        <Image source={foto_Scanner} style={styles.Img_Scanner}/>
+                    <TouchableOpacity onPress={() => navigation.navigate('Scanner')}>
+                        <Image source={foto_Scanner} style={styles.Img_Scanner} />
                     </TouchableOpacity>
                 </View>
 
-
-                <TouchableOpacity>
+                <TouchableOpacity onPress={() => navigation.navigate('History')}>
                     <View style={styles.container_history}>
                         <Image source={foto_history} style={styles.Img_history} />
                         <Text style={styles.Text_history}>History</Text>
                     </View>
                 </TouchableOpacity>
+
             </View>
         </View>
     );
 }
+
+
+export default function App() {
+    return (
+        <NavigationContainer>
+            <StatusBar style="auto" />
+            <Stack.Navigator initialRouteName="Menu" screenOptions={{ headerShown: false }}>
+                <Stack.Screen name="Menu" component={Menu} />
+                <Stack.Screen name="Generate" component={GenerateScreen} />
+                <Stack.Screen name="Scanner" component={ScannerScreen} />
+                <Stack.Screen name="History" component={HistoryScreen} />
+            </Stack.Navigator>
+        </NavigationContainer>
+    );
+}
+
 
 const styles = StyleSheet.create({
     container: {

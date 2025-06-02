@@ -3,6 +3,11 @@ import { useState, useEffect, useRef } from 'react';
 import { BarCodeScanner } from 'expo-barcode-scanner';
 import Slider from '@react-native-community/slider';
 import Scanners from './Scanners';
+import Menu from "../../navigate/Menu";
+
+
+
+
 
 export default function Scanner() {
     const [done, setDone] = useState(false);
@@ -112,6 +117,15 @@ export default function Scanner() {
                     <Text style={styles.buttonText}>Сканировать ещё</Text>
                 </Pressable>
             )}
+
+
+
+            {/* Test */}
+            {/* <Menu/> */}
+
+
+
+
         </View>
     );
 }

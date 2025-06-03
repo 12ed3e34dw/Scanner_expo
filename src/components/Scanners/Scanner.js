@@ -122,18 +122,18 @@ export default function Scanner() {
 
             {/* Test */}
             {/* <Menu/> */}
-
-
-
-
         </View>
+
     );
+
+
 }
 
 const BOX_HEIGHT = 300;
 const BOX_WIDTH = 300;
 
 const styles = StyleSheet.create({
+
     container: {
         flex: 1,
     },

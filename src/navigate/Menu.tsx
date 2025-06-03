@@ -3,9 +3,16 @@ import {StyleSheet, View, Text, TouchableOpacity, Image} from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+
+
 import foto_Scanner from '../../src/assets/assets_Navigate/foto_Scanner.png';
 import foto_generate from '../../src/assets/assets_Navigate/foto_generate.png';
 import foto_history from '../../src/assets/assets_Navigate/foto_history.png';
+import foto_gallery from '../../src/assets/assets_Navigate/foto_gallery.png';
+import foto_flash from '../../src/assets/assets_Navigate/foto_flashlight.png';
+import foto_camera from '../../src/assets/assets_Navigate/foto_camera.png';
+
+
 
 
 import ScannerScreen from "../components/Scanners/Scanner";
@@ -32,7 +39,34 @@ function HistoryScreen() {
 
 function Menu({ navigation }) {
     return (
+
         <View style={styles.container}>
+
+            <TouchableOpacity>
+            <View style={styles.container_gallery}>
+                <Image source={foto_gallery} style={styles.Img_gallery} />
+            </View>
+            </TouchableOpacity>
+
+            <TouchableOpacity>
+                <View style={styles.container_flashlight}>
+                    <Image source={foto_flash} style={styles.Img_flashlight} />
+                </View>
+            </TouchableOpacity>
+
+             <TouchableOpacity>
+               <View style={styles.container_camera}>
+                   <Image source={foto_camera} style={styles.Img_camera} />
+                </View>
+             </TouchableOpacity>
+
+
+
+
+
+
+
+
             <View style={styles.container_1}>
 
                 <TouchableOpacity onPress={() => navigation.navigate('Generate')}>
@@ -77,6 +111,52 @@ export default function App() {
 
 
 const styles = StyleSheet.create({
+
+    Img_camera:{
+        width:25,
+        height:25,
+        left:40,
+        top:5,
+    },
+    Img_flashlight:{
+        width:17,
+        height:25,
+        left:40,
+        top:5,
+    },
+
+    Img_gallery:{
+        left:30,
+        top:8,
+        width:25,
+        height:25,
+    },
+    container_flashlight:{
+        width:100,
+        height:40,
+        top:30,
+        left:130,
+        backgroundColor:'#333333',
+    },
+    container_camera:{
+        width:100,
+        height:40,
+        top:-10,
+        left:230,
+        backgroundColor:'#333333',
+        borderTopRightRadius:5,
+        borderBottomRightRadius:5,
+    },
+
+    container_gallery:{
+        width:100,
+        height:40,
+        top:70,
+        left:40,
+        backgroundColor:'#333333',
+        borderTopLeftRadius:5,
+        borderBottomLeftRadius:5,
+    },
     container: {
         flex: 1,
         backgroundColor: 'white',
@@ -99,7 +179,7 @@ const styles = StyleSheet.create({
         width: 160,
         height: 70,
         backgroundColor: '#333333',
-        top: 670,
+        top: 570,
         left: 180,
         zIndex: 1,
         borderTopRightRadius:8,
@@ -110,7 +190,7 @@ const styles = StyleSheet.create({
         width: 150,
         height: 70,
         backgroundColor: '#333333',
-        top: 670,
+        top: 570,
         left: 30,
         zIndex: 1,
         borderTopLeftRadius:8,
@@ -123,7 +203,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#FDB623',
         left: 155,
         borderRadius: 30,
-        top: 650,
+        top: 555,
         zIndex: 99999,
     },
     Img_Scanner: {
